@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter.listenerDelete = {
             TaskDataSource.deleteTask(it)
+            binding.rvTasks.adapter = adapter
             updateList()
         }
     }
