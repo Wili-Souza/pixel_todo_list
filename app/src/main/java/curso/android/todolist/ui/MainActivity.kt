@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.rvTasks.adapter = adapter
+        updateList()
         
         insertListeners()
     }
@@ -32,21 +33,26 @@ class MainActivity : AppCompatActivity() {
         }
 
         adapter.listenerEdit = {
-
+            val intent = Intent(this, AddTaskActivity::class.java)
+            intent.putExtra(AddTaskActivity.TASK_ID, it.id)
+            resultLauncher.launch(intent)
         }
 
         adapter.listenerDelete = {
-
+            TaskDataSource.deleteTask(it)
+            updateList()
         }
     }
 
     var resultLauncher = registerForActivityResult(StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
-            val data: Intent? = result.data
-            Log.d("TESTING", data.toString())
             binding.rvTasks.adapter = adapter
-            adapter.submitList(TaskDataSource.getList())
+            updateList()
         }
+    }
+
+    private fun updateList() {
+        adapter.submitList(TaskDataSource.getList())
     }
 
     companion object {

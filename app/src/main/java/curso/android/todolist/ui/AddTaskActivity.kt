@@ -1,6 +1,7 @@
 package curso.android.todolist.ui
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,16 @@ class AddTaskActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if ( intent.hasExtra(TASK_ID) ) {
+            val taskId = intent.getIntExtra(TASK_ID, 0)
+            TaskDataSource.findById(taskId)?.let {
+                binding.tilTitle.text = it.title
+                binding.tilDescription.text = it.description
+                binding.tilDate.text = it.date
+                binding.tilTime.text = it.time
+            }
+        }
 
         insertListeners()
     }
@@ -61,13 +72,18 @@ class AddTaskActivity: AppCompatActivity() {
                 title = binding.tilTitle.text,
                 description = binding.tilDescription.text,
                 time = binding.tilTime.text,
-                date = binding.tilDate.text
+                date = binding.tilDate.text,
+                id = intent.getIntExtra(TASK_ID, 0)
             )
             TaskDataSource.insertTask(task)
 
             setResult(Activity.RESULT_OK)
             finish()
         }
+    }
+
+    companion object {
+        const val TASK_ID = "task_id"
     }
 
 }
