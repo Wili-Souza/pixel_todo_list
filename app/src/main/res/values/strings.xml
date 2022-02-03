@@ -14,4 +14,8 @@
     <string name="label_delete">Deletar</string>
     <string name="label_empty_state">Ops! Você ainda não\n possui nenhuma tarefa.</string>
     <string name="description_empty_state">Não há nenhum tarefa</string>
+    <string name="label_task_title">Título da tarefa</string>
+    <string name="note_description">task_note</string>
+    <string name="date_mock">01/01/2021 13:00</string>
+    <string name="description_dots">dots</string>
 </resources>

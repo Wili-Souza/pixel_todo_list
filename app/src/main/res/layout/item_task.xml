@@ -3,36 +3,70 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_margin="16dp">
+        android:layout_marginHorizontal="16dp">
 
-    <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
+
+
+    <FrameLayout
+            android:id="@+id/fl_new_task"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:text="Título da tarefa"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
-            android:id="@+id/tv_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="01/01/2021 13:00"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_title"/>
-
-    <ImageView
-            android:id="@+id/iv_more"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_margin="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ic_dots"
-            android:layout_width="40dp"
-            android:layout_height="40dp"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+                android:id="@+id/iv_note"
+                android:src="@drawable/ic_note"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/note_description"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:paddingLeft="16dp"
+                android:paddingVertical="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="0dp"
+                app:layout_constraintHorizontal_weight=".9"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/dark_purple"
+                android:textStyle="bold"
+                android:text="@string/label_task_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/tv_date"/>
+
+            <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date_mock"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageView
+                    android:id="@+id/iv_more"
+                    android:contentDescription="@string/description_dots"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="25dp"
+                    android:src="@drawable/ic_dots"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
