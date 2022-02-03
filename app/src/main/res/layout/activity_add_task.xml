@@ -8,6 +8,7 @@
             android:id="@+id/toolBar"
             app:layout_constraintTop_toTopOf="parent"
             app:title="@string/add_task_title"
+            app:titleTextColor="@color/medium_purple"
             app:navigationIcon="@drawable/ic_back"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -35,10 +36,12 @@
             app:layout_constraintStart_toStartOf="@id/guide_start"
             app:layout_constraintEnd_toEndOf="@id/guide_end"
             android:hint="@string/label_title"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:theme="@style/PurleTextLabel">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:inputType="text"
+                android:textColor="@color/dark_purple"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
@@ -52,7 +55,8 @@
             app:layout_constraintStart_toStartOf="@id/guide_start"
             app:layout_constraintEnd_toEndOf="@id/guide_end"
             android:hint="@string/label_description"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:theme="@style/PurleTextLabel">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:inputType="textMultiLine"
@@ -70,7 +74,8 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="@string/label_date"
             app:startIconDrawable="@drawable/ic_calendar"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:theme="@style/PurleTextLabel">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:inputType="none"
@@ -89,7 +94,8 @@
             app:layout_constraintStart_toEndOf="@id/til_date"
             android:hint="@string/label_time"
             app:startIconDrawable="@drawable/ic_timer"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:theme="@style/PurleTextLabel">
 
         <com.google.android.material.textfield.TextInputEditText
                 android:inputType="none"
@@ -98,28 +104,64 @@
                 android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-            android:id="@+id/btn_cancel"
-            app:layout_constraintBottom_toTopOf="@id/btn_new_task"
+    <FrameLayout
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            app:layout_constraintBottom_toTopOf="@id/fl_new_task"
             app:layout_constraintEnd_toEndOf="@id/guide_end"
             app:layout_constraintStart_toStartOf="@id/guide_start"
-            android:layout_marginBottom="8dp"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:text="@string/label_cancel_task"
-            android:textAllCaps="false"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
+            android:layout_marginBottom="8dp">
 
-    <Button
-            android:id="@+id/btn_new_task"
+        <ImageButton
+                android:id="@+id/btn_cancel"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:padding="0dp"
+                android:src="@drawable/ic_button_1"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:textColor="@color/dark_purple"
+                android:text="@string/label_cancel_task"
+                android:textAllCaps="false">
+        </TextView>
+    </FrameLayout>
+
+    <FrameLayout
+            android:id="@+id/fl_new_task"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guide_end"
             app:layout_constraintStart_toStartOf="@id/guide_start"
-            android:layout_marginBottom="16dp"
-            style="@style/Widget.MaterialComponents.Button"
-            android:text="@string/label_new_task"
-            android:textAllCaps="false"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
+            android:layout_marginBottom="32dp">
+
+        <ImageButton
+                android:id="@+id/btn_new_task"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:padding="0dp"
+                android:src="@drawable/ic_button_2"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:text="@string/label_new_task"
+                android:textAllCaps="false">
+        </TextView>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
